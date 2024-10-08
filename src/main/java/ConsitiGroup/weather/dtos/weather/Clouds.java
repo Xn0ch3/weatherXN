@@ -4,4 +4,5 @@ import lombok.Data;
 
 @Data //Anotacion para crear Getters y Setters de manera automatizada.
 public class Clouds {
+    private short all;
 }

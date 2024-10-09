@@ -9,7 +9,7 @@ public class WeatherData {
     private String name;
     private int cod;
     private long timezone;
-    private Coords coords;
+    private Coord coord;
     private WeatherElement[] weather;
     private String base;
     private Main main;

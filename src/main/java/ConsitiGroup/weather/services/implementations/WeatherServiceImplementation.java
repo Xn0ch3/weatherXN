@@ -16,13 +16,15 @@ public class WeatherServiceImplementation implements WeatherService {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${API_KEY}")
+    @Value("${weatherApiKey}")
     private String ApiKey;
 
     @Override
     public WeatherData getWeatherByCityName(String cityName) {
         // Construyo la URL de la API de OpenWeatherMap con el nombre de la ciudad
         String url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=metric" + "&lang=es" + "&appid="+ApiKey;
+
+        System.out.println(url);
 
         // Realiza la llamada a la API y manejar la respuesta conviertiendolo en un JSON
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
@@ -47,7 +49,8 @@ public class WeatherServiceImplementation implements WeatherService {
         // Realiza la llamada a la API y manejar la respuesta conviertiendolo en un JSON
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 
-        // Convier la respuesta JSON a un objeto WeatherData
+        System.out.println(url);
+        // Convier la respuesta JSON a un objeto ForecastData
         ObjectMapper objectMapper = new ObjectMapper();
         ForecastData forecastData = null;
         try {
